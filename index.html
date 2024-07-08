@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <h3>07 lipca 2024 r</h3>
+      <h1>Instalacja narzędzi Kali Linux na Ubuntu</h1>
+    </header>
+    <main>
+      <p class="text">
+        W tej instrukcji dowiesz się, jak zainstalować i skonfigurować wirtualną
+        maszynę oraz dodać do niej wszystkie narzędzia Kali na dowolnej
+        dystrybucji Linux. Za przykład w tej instrukcji posłuży nam dystrybucja
+        Ubuntu.
+      </p>
+      <p class="text">
+        Na początek należy wybrać dystrybucję, z której będziemy korzystać.
+        Możliwości jest wiele; możemy zainstalować np. Ubuntu, Debian, openSUSE
+        itp. Instalacja może się delikatnie różnić w zależności od dystrybucji.
+      </p>
+      <p style="color: rgb(201, 46, 46)" class="text">
+        UWAGA! Musisz przydzielić przynajmniej 40 GB pamięci dla maszyny
+        wirtualnej.
+      </p>
+      <p class="text">
+        Po wybraniu dystrybucji, z której będziesz korzystał, możemy przystąpić
+        do właściwej instrukcji.
+      </p>
+      <p class="text">
+        Pobieramy Ubuntu Desktop z oficjalnej strony:
+        <a class="text" href="https://ubuntu.com/download" target="_blank"
+          >ubuntu.com</a
+        >
+      </p>
+      <p class="text" style="margin-top: 1rem">
+        Następnie w VirtualBox tworzymy nową wirtualną maszynę i w opcji ISO
+        Image wybieramy plik Ubuntu Desktop, który pobraliśmy z powyższego
+        linku.
+      </p>
+      <p class="text">
+        Uruchamiamy maszynę, a po przejściu przez proces instalacji otwieramy
+        terminal i wpisujemy poniższe komendy:
+      </p>
+      <p class="text">
+        Aktualizujemy system oraz pobieramy niezbędne narzędzia:
+      </p>
+      <pre>
+        <p id="text-1" class="code text-to-copy">sudo apt update && sudo apt upgrade</p>
+        <button data-copy-target="text-1"><i class="fa-regular fa-clone fa-lg"></i></button>
+      </pre>
+      <p class="text">
+        Pobieramy narzędzie, które umożliwi pobrać repozytorium z GitHub:
+      </p>
+      <pre>
+        <p id="text-2" class="code text-to-copy">sudo apt install git</p>
+        <button data-copy-target="text-2"><i class="fa-regular fa-clone fa-lg"></i></button>
+      </pre>
+      <p class="text">Teraz możemy pobrać paczkę Katoolin3 na Pulpit:</p>
+      <pre>
+        <p id="text-3" class="code text-to-copy">git clone https://github.com/s-h-3-l-l/katoolin3</p>
+        <button data-copy-target="text-3"><i class="fa-regular fa-clone fa-lg"></i></button>
+      </pre>
+      <p class="text">
+        Przechodzimy do pobranego katalogu i nadajemy plikowi install.sh
+        permisje wykonawczą EXECUTE:
+      </p>
+      <pre style="margin-bottom: 0.8rem">
+        <p id="text-4" class="code text-to-copy">cd katoolin</p>
+        <button data-copy-target="text-4"><i class="fa-regular fa-clone fa-lg"></i></button>
+      </pre>
+      <pre>
+        <p id="text-5" class="code text-to-copy">sudo chmod +x ./install.sh</p>
+        <button data-copy-target="text-5"><i class="fa-regular fa-clone fa-lg"></i></button>
+      </pre>
+      <p class="text">Następne komendy musimy wykonać z pozimu root'a:</p>
+      <pre style="margin-bottom: 0.8rem">
+        <p id="text-6" class="code text-to-copy">sudo su</p>
+        <button data-copy-target="text-6"><i class="fa-regular fa-clone fa-lg"></i></button>
+      </pre>
+      <pre>
+        <p id="text-7" class="code text-to-copy">wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add</p>
+        <button data-copy-target="text-7"><i class="fa-regular fa-clone fa-lg"></i></button>
+      </pre>
+      <p class="text">
+        Otwieramy plik install.sh, a następnie musimy wykomentować linijkę,
+        zaczynającą się na ‘apt-key’ przy pomocy ‘#’ na początku linii.
+      </p>
+      <pre>
+        <p id="text-8" class="code text-to-copy">sudo nano install.sh</p>
+        <button data-copy-target="text-8"><i class="fa-regular fa-clone fa-lg"></i></button>
+      </pre>
+      <div class="flex" style="margin-bottom: 1rem">
+        <p class="text">Przed:</p>
+        <img src="./image/img1.png" />
+      </div>
+
+      <div class="flex">
+        <p class="text">Po:</p>
+        <img src="./image/img2.png" />
+      </div>
+      <p class="text" style="margin-top: 1.5rem">
+        Zapisujemy plik i wychodzimy z niego. (Ctrl + O, Ctrl + X)
+      </p>
+      <p class="text">Następnie uruchamiamy instalację install.sh:</p>
+      <pre>
+        <p id="text-9" class="code text-to-copy">./install.sh</p>
+        <button data-copy-target="text-9"><i class="fa-regular fa-clone fa-lg"></i></button>
+      </pre>
+      <p class="text">Powinien się wyświetlić taki komunikat:</p>
+      <div class="flex">
+        <img src="./image/img3.png" />
+      </div>
+      <p class="text" style="margin-top: 1.5rem">
+        Przed uruchomieniem narzędzi Katoolin, musimy jeszcze zrobić jedną
+        rzecz.
+      </p>
+      <pre>
+        <p id="text-10" class="code text-to-copy">sudo nano ~/.bashrc</p>
+        <button data-copy-target="text-10"><i class="fa-regular fa-clone fa-lg"></i></button>
+      </pre>
+      <p class="text">
+        Po wejściu do edycji pliku, przechodzimy na sam koniec i wklejamy:
+      </p>
+      <pre>
+        <p id="text-11" class="code text-to-copy">export PATH=$PATH:~/katoolin3:/usr/bin/python3</p>
+        <button data-copy-target="text-11"><i class="fa-regular fa-clone fa-lg"></i></button>
+      </pre>
+      <p class="text">Zapisujemy i uruchamiamy Katoolin3:</p>
+      <pre>
+        <p id="text-12" class="code text-to-copy">katoolin3</p>
+        <button data-copy-target="text-12"><i class="fa-regular fa-clone fa-lg"></i></button>
+      </pre>
+      <p class="text">
+        Po uruchomieniu ukazuje nam się menu, z którego możemy wybrać co
+        dokładnie chcemy zainstalować z reposytorium Kali, możemy też pobrać
+        wszystko.
+      </p>
+      <div class="flex">
+        <img src="./image/img4.png" />
+      </div>
+      <p class="text" style="margin-top: 1.5rem">
+        Nas interesują wszystkie narzędzia, więc wybieramy opcję „Install All”,
+        wybierając opcję "1"
+      </p>
+      <p class="text">
+        Po ukończeniu pobierania, należy uruchomić maszynę ponownie. Możliwe, że
+        będzie trzeba zresetować maszynę kilkukrotnie.
+      </p>
+      <p class="text">
+        Po uruchomieniu i zalogowaniu się wpisując poniższą komendę, możemy
+        zweryfikować, jakie narzędzia pobraliśmy z reposytorium Katoolin na swój
+        komputer:
+      </p>
+      <pre>
+        <p id="text-13" class="code text-to-copy">dpkg --list | grep kali</p>
+        <button data-copy-target="text-13"><i class="fa-regular fa-clone fa-lg"></i></button>
+      </pre>
+    </main>
+    <a href="#" class="to-top">
+      <i class="fas fa-chevron-up"></i>
+    </a>
+    <script src="./main.js"></script>
+  </body>
+</html>
